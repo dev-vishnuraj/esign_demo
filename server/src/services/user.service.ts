@@ -1,12 +1,8 @@
-import { LoginDto } from '../dtos/users.dto';
-import passport from 'passport';
+import { SignupDto } from '../dtos/users.dto';
+import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import HttpException from '../exceptions/HttpException';
-import {
-	DataStoredInToken,
-	TokenData,
-	User,
-} from '../interfaces/user.interface';
+import { DataStoredInToken, TokenData } from '../interfaces/user.interface';
 
 const Users = require('../../models').Users;
 
@@ -26,29 +22,28 @@ class UserService {
 		};
 	}
 
-	public async login(params: LoginDto) {
-		const { email } = params;
-		const check_valid_user = await Users.findOne({
+	public async signup(params: SignupDto) {
+		const { firstName, lastName, email, password } = params;
+		const check_user_exists = await Users.findOne({
 			where: {
 				email: email.toLowerCase(),
 			},
 		});
-		if (!check_valid_user) {
-			throw new HttpException(403, 'Email not found');
+		if (check_user_exists) {
+			throw new HttpException(400, 'Email already exists. please login!');
 		}
-		passport.authenticate(
-			'login-strategy',
-			{ session: false },
-			async (err: HttpException, user: User) => {
-				if (err) {
-					throw new HttpException(403, err.message);
-				} else {
-					const access_token = this.createToken(user, false);
-					const refresh_token = this.createToken(user, true);
-					return { access_token, refresh_token };
-				}
-			}
-		);
+		const hashed_password = await bcrypt.hash(password, 10);
+		const new_user = await Users.create({
+			first_name: firstName,
+			last_name: lastName,
+			email: email.toLowerCase(),
+			password: hashed_password,
+		});
+		return {
+			firstName: new_user.first_name,
+			lastName: new_user.last_name,
+			email: new_user.email,
+		};
 	}
 }
 

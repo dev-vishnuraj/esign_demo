@@ -19,7 +19,14 @@ const Login = () => {
     try {
       const url = "http://localhost:4000/v1/users/login";
       const { data: response } = await axios.post(url, data);
-      localStorage.setItem("token", response.data);
+      localStorage.setItem(
+        "access_token",
+        JSON.stringify(response.access_token.token)
+      );
+      localStorage.setItem(
+        "refresh_token",
+        JSON.stringify(response.refresh_token.token)
+      );
       window.location = "/";
     } catch (error) {
       if (error.response && error.response.status >= 400 && error.response) {

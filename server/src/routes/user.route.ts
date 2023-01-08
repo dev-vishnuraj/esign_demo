@@ -19,6 +19,11 @@ class UserRoute implements Route {
 			this.userController.login
 		);
 
+		this.router.post(
+			`${this.path}/signup`,
+			this.userController.signup
+		);
+
 	}
 }
 

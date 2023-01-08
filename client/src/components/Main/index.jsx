@@ -2,7 +2,8 @@ import styles from "./styles.module.css";
 
 const Main = () => {
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
     window.location.reload();
   };
   return (
