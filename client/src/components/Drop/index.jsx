@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { cleanBorder, primary45 } from "../../utils/Colors/colors";
 
-export default function Drop({ onLoaded }) {
+const Drop = ({ onLoaded }) => {
   const styles = {
     container: {
       textAlign: "center",
@@ -35,3 +35,5 @@ export default function Drop({ onLoaded }) {
     </div>
   );
 }
+
+export default Drop;

@@ -1,4 +1,4 @@
-import { BigButton } from "./BigButton";
+import { BigButton } from "../BigButton";
 import {primary45} from "../../utils/Colors/colors";
 
 export default function PagingControl({totalPages, pageNum, setPageNum}) {

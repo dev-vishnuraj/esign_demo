@@ -1,6 +1,6 @@
 import { DialogBox } from "../DialogBox";
 import SignatureCanvas from "react-signature-canvas";
-import { ConfirmOrCancel } from "./ConfirmOrCancel";
+import { ConfirmOrCancel } from "../ConfirmOrCancel";
 import { primary45 } from "../../utils/Colors/colors";
 import { useRef } from "react";
 

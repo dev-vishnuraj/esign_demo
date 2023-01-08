@@ -15,9 +15,7 @@ const Main = () => {
         </button>
       </nav>
       <div className={styles.main_content}>
-        <div className={styles.template_list_container}>
-          <Signature />
-        </div>
+        <Signature />
       </div>
     </div>
   );

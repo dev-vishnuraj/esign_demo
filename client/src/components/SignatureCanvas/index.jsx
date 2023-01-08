@@ -1,14 +1,18 @@
 import { useRef, useState } from "react";
-import Drop from "./Drop";
-import { Document, Page } from "react-pdf";
+// import styles from "./styles.module.css";
+import Drop from "../Drop";
+import { Document, Page, pdfjs } from "react-pdf";
 import { PDFDocument, rgb } from "pdf-lib";
 import { blobToURL } from "../../utils/Utils/utils";
-import PagingControl from "../../components/PagingControl";
-import { AddSignatureDialogBox } from "../../components/AddSignatureDialogBox";
-import { BigButton } from "./components/BigButton";
-import DraggableSignature from "./components/DraggableSignature";
-import DraggableText from "./components/DraggableText";
+import PagingControl from "../PagingControl";
+import { AddSignatureDialogBox } from "../AddSignatureDialogBox";
+import { BigButton } from "../BigButton";
+import DraggableSignature from "../DraggableSignature";
+import DraggableText from "../DraggableText";
 import dayjs from "dayjs";
+
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const downloadUri = (uri, name) => {
   var link = document.createElement("a");
@@ -19,7 +23,28 @@ const downloadUri = (uri, name) => {
   document.body.removeChild(link);
 };
 
-export const SignatureCanvasComponent = (props) => {
+export const SignatureCanvasComponent = () => {
+  const styles = {
+    container: {
+      maxWidth: 900,
+      margin: "0 auto",
+    },
+    sigBlock: {
+      display: "inline-block",
+      border: "1px solid #000",
+    },
+    documentBlock: {
+      maxWidth: 800,
+      margin: "20px auto",
+      marginTop: 8,
+      border: "1px solid #999",
+    },
+    controls: {
+      maxWidth: 800,
+      margin: "0 auto",
+      marginTop: 8,
+    },
+  };
   const [pdf, setPdf] = useState(null);
   const [autoDate, setAutoDate] = useState(true);
   const [signatureURL, setSignatureURL] = useState(null);
@@ -94,7 +119,7 @@ export const SignatureCanvasComponent = (props) => {
                 inverted={true}
                 title={"Download"}
                 onClick={() => {
-                  downloadURI(pdf, "file.pdf");
+                  downloadUri(pdf, "file.pdf");
                 }}
               />
             ) : null}
