@@ -1,0 +1,19 @@
+.form_container {
+  border: 2px solid red;
+  padding: 10px;
+}
+
+.name_container {
+  margin: 10px;
+}
+
+.date_container {
+  margin: 10px;
+}
+
+.signature_container {
+  margin: 10px;
+  border: 2px solid green;
+  width: 250px;
+  height: 200px;
+}

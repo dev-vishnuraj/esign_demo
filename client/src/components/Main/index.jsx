@@ -1,3 +1,4 @@
+import Signature from "../Signature";
 import styles from "./styles.module.css";
 
 const Main = () => {
@@ -9,11 +10,15 @@ const Main = () => {
   return (
     <div className={styles.main_container}>
       <nav className={styles.navbar}>
-        <h1>Main Component here</h1>
         <button className={styles.white_btn} onClick={handleLogout}>
           Logout
         </button>
       </nav>
+      <div className={styles.main_content}>
+        <div className={styles.template_list_container}>
+          <Signature />
+        </div>
+      </div>
     </div>
   );
 };
