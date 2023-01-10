@@ -1,5 +1,6 @@
 import { BigButton } from "../BigButton";
 import React from "react";
+import styles from "./styles.module.css";
 
 export function ConfirmOrCancel({
   onCancel,
@@ -9,28 +10,23 @@ export function ConfirmOrCancel({
   hideCancel,
   disabled
 }) {
-  const styles = {
-    actions: {
-      display: "flex",
-      justifyContent: "space-between",
-    },
-    cancel: {
-      marginRight: 8,
-    },
-  };
-
   return (
-    <div style={styles.actions}>
+    <div className={styles.actions}>
       <div>{leftBlock}</div>
       <div>
         {!hideCancel ? (
           <BigButton
             title={"Cancel"}
-            style={styles.cancel}
+            className={styles.cancel}
             onClick={onCancel}
           />
         ) : null}
-        <BigButton title={confirmTitle} inverted={true} onClick={onConfirm} disabled={disabled}/>
+        <BigButton
+          title={confirmTitle}
+          inverted={true}
+          onClick={onConfirm}
+          disabled={disabled}
+        />
       </div>
     </div>
   );

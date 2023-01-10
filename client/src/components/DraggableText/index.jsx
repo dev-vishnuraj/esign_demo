@@ -1,7 +1,8 @@
 import Draggable from "react-draggable";
 import { FaCheck, FaTimes } from "react-icons/fa";
-import { errorColor, goodColor, primary45 } from "../../utils/Colors/colors";
+import { errorColor, goodColor } from "../../utils/Colors/colors";
 import { useState, useEffect, useRef } from "react";
+import styles from "./styles.module.css";
 
 export default function DraggableText({ onEnd, onSet, onCancel, initialText }) {
   const [text, setText] = useState("Text");
@@ -16,32 +17,6 @@ export default function DraggableText({ onEnd, onSet, onCancel, initialText }) {
     }
   }, []);
 
-  const styles = {
-    container: {
-      position: "absolute",
-      zIndex: 100000,
-      border: `2px solid ${primary45}`
-    },
-    controls: {
-      position: "absolute",
-      right: 0,
-      display: "inline-block",
-      backgroundColor: primary45
-      // borderRadius: 4,
-    },
-    smallButton: {
-      display: "inline-block",
-      cursor: "pointer",
-      padding: 4
-    },
-    input: {
-      border: 0,
-      fontSize: 20,
-      padding: 3,
-      backgroundColor: "rgba(0,0,0,0)",
-      cursor: "move"
-    }
-  };
   return (
     <Draggable onStop={onEnd}>
       <div style={styles.container}>

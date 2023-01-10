@@ -10,7 +10,7 @@ import { BigButton } from "../BigButton";
 import DraggableSignature from "../DraggableSignature";
 import DraggableText from "../DraggableText";
 import dayjs from "dayjs";
-
+import styles from "./styles.module.css";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -24,27 +24,6 @@ const downloadUri = (uri, name) => {
 };
 
 export const SignatureCanvasComponent = () => {
-  const styles = {
-    container: {
-      maxWidth: 900,
-      margin: "0 auto",
-    },
-    sigBlock: {
-      display: "inline-block",
-      border: "1px solid #000",
-    },
-    documentBlock: {
-      maxWidth: 800,
-      margin: "20px auto",
-      marginTop: 8,
-      border: "1px solid #999",
-    },
-    controls: {
-      maxWidth: 800,
-      margin: "0 auto",
-      marginTop: 8,
-    },
-  };
   const [pdf, setPdf] = useState(null);
   const [autoDate, setAutoDate] = useState(true);
   const [signatureURL, setSignatureURL] = useState(null);
@@ -80,7 +59,7 @@ export const SignatureCanvasComponent = () => {
       ) : null}
       {pdf ? (
         <div>
-          <div style={styles.controls}>
+          <div classNam={styles.controls}>
             {!signatureURL ? (
               <BigButton
                 marginRight={8}
@@ -124,7 +103,7 @@ export const SignatureCanvasComponent = () => {
               />
             ) : null}
           </div>
-          <div ref={documentRef} style={styles.documentBlock}>
+          <div ref={documentRef} classNam={styles.documentBlock}>
             {textInputVisible ? (
               <DraggableText
                 initialText={

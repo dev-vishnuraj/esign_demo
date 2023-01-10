@@ -1,56 +1,38 @@
 import { DialogBox } from "../DialogBox";
 import SignatureCanvas from "react-signature-canvas";
 import { ConfirmOrCancel } from "../ConfirmOrCancel";
-import { primary45 } from "../../utils/Colors/colors";
 import { useRef } from "react";
+import styles from "./styles.module.css";
 
-export function AddSignatureDialogBox({ onConfirm, onClose, autoDate, setAutoDate }) {
-  const sigRef = useRef(null);
+export function AddSignatureDialogBox({
+  onConfirm,
+  onClose,
+  autoDate,
+  setAutoDate
+}) {
+  const signRef = useRef(null);
 
-  const styles = {
-    sigContainer: {
-      display: "flex",
-      justifyContent: "center",
-    },
-    sigBlock: {
-      display: "inline-block",
-      border: `1px solid ${primary45}`,
-    },
-    instructions: {
-      display: "flex",
-      justifyContent: "space-between",
-      textAlign: "center",
-      color: primary45,
-      marginTop: 8,
-      width: 600,
-      alignSelf: "center",
-    },
-    instructionsContainer: {
-      display: "flex",
-      justifyContent: "center",
-    },
-  };
   return (
     <DialogBox
       isVisible={true}
       title={"Add signature"}
       body={
-        <div style={styles.container}>
-          <div style={styles.sigContainer}>
-            <div style={styles.sigBlock}>
+        <div className={styles.container}>
+          <div className={styles.sigContainer}>
+            <div className={styles.sigBlock}>
               <SignatureCanvas
                 velocityFilterWeight={1}
-                ref={sigRef}
+                ref={signRef}
                 canvasProps={{
                   width: "600",
                   height: 200,
-                  className: "sigCanvas",
+                  className: "sigCanvas"
                 }}
               />
             </div>
           </div>
-          <div style={styles.instructionsContainer}>
-            <div style={styles.instructions}>
+          <div className={styles.instructionsContainer}>
+            <div className={styles.instructions}>
               <div>
                 Auto date/time{" "}
                 <input
@@ -66,8 +48,8 @@ export function AddSignatureDialogBox({ onConfirm, onClose, autoDate, setAutoDat
           <ConfirmOrCancel
             onCancel={onClose}
             onConfirm={() => {
-              const sigURL = sigRef.current.toDataURL();
-              onConfirm(sigURL);
+              const signatureURL = signRef.current.toDataURL();
+              onConfirm(signatureURL);
             }}
           />
         </div>

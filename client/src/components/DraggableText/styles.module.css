@@ -1,0 +1,27 @@
+:root {
+  --primary45: hsl(218;49%, 66%);
+}
+
+.container {
+  position: absolute;
+  z-index: 100000;
+  border: 2px solid var(--primary45);
+}
+.controls {
+  position: absolute;
+  right: 0;
+  display: inline-block;
+  background-color: var(--primary45);
+}
+.smallButton {
+  display: inline-block;
+  cursor: pointer;
+  padding: 4;
+}
+.input {
+  border: 0;
+  font-size: 20;
+  padding: 3;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: move;
+}

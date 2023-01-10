@@ -1,0 +1,18 @@
+:root {
+  --primary45: hsl(218;49%; 66%);
+}
+
+.container {
+  margin-top: 8;
+  margin-bottom: 8;
+}
+.inlineFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pageInfo {
+  padding: 8;
+  color: var(--primary45);
+  font-size: 14;
+}

@@ -1,0 +1,21 @@
+.sigContainer {
+  display: flex;
+  justify-content: center;
+}
+.sigBlock {
+  display: inline-block;
+  border: 1px solid hsl(218, 49%, 66%);
+}
+.instructions {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  color: hsl(218, 49%, 66%);
+  margin-top: 8;
+  width: 600;
+  align-self: center;
+}
+.instructionsContainer {
+  display: flex;
+  justify-content: center;
+}
